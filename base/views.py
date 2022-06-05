@@ -11,6 +11,7 @@ def home(request):
         Q(name__icontains=q) |
         Q(caption__icontains=q) 
     )
+
     context = {'images':images}
     return render(request,'home.html',context)
 
@@ -24,6 +25,7 @@ def register(request):
             user.save()
             login(request, user)
             return redirect('home')
+            
     context = {'form':form}
     return render(request,'register.html',context)
 

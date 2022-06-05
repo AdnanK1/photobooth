@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if images %}
-
+{% for image in images %}
+<div class="card mb-3">
+  <img src="{{image.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">{{image.created}}</small></p>
+  </div>
+</div>
+{% endfor %}
 {% else %}
 <div class="shadow p-3 mb-5 bg-body rounded">
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <p class="text-center">Sorry there are no Photos to display</p>
+        <p class="text-center"><i class="fa-light fa-face-disappointed"></i> Sorry there are no Photos to display</p>
       </blockquote>
     </div>
   </div>
