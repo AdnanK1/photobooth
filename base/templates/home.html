@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if images %}
 
+{% else %}
+<div class="shadow p-3 mb-5 bg-body rounded">
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p class="text-center">Sorry there are no Photos to display</p>
+      </blockquote>
+    </div>
+  </div>
+{% endif %}
 {% endblock %}
