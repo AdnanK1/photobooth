@@ -1,11 +1,11 @@
 
-/*input{
+input{
     width: 213px;
     height: 40px;
     left: 579px;
     top: 746px;
     border-radius: 30px;
-}*/
+}
 body{
     margin: 0;
     background: linear-gradient(120deg, #05073a,#dc0606ca);
