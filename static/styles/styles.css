@@ -1,0 +1,22 @@
+.container{
+    position: relative;
+    background: #D9D9D9;
+    border-radius: 25px;
+}
+input{
+    width: 213px;
+    height: 40px;
+    left: 579px;
+    top: 746px;
+    border-radius: 30px;
+}
+body{
+    margin: 0;
+    background: linear-gradient(120deg, #05073a,#dc0606ca);
+    overflow: hidden;
+    height: 100vh;
+}
+h2{
+    text-align: center;
+    color: #fff;
+}
