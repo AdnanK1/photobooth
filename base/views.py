@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout 
 from django.db.models import Q
-from .forms import CreateUserForm
+from .forms import CreateUserForm, CreatePost
 from .models import Image
 
 # Create your views here.
@@ -60,5 +60,6 @@ def logoutUser(request):
     return redirect('login')
 
 def createPost(request):
-    context = {}
+    form = CreatePost()
+    context = {'form':form}
     return render(request,'create_post.html',context)
