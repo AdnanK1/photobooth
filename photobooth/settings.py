@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'base',
     'cloudinary',
     'crispy_forms',
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [
