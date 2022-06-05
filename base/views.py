@@ -32,7 +32,7 @@ def register(request):
     context = {'form':form}
     return render(request,'register.html',context)
 
-def loginPage(request):
+def login_page(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -50,3 +50,7 @@ def loginPage(request):
 
     context = {}
     return render(request,'login.html',context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
