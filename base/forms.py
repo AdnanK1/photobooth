@@ -14,4 +14,4 @@ class CreatePost(ModelForm):
     class Meta:
         model = Image
         fields = '__all__'
-        exclude = ['profile','likes']
+        exclude = ['profile','likes','comments']

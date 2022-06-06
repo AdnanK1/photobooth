@@ -6,6 +6,9 @@
     top: 746px;
     border-radius: 30px;
 } */
+span{
+    color:#dc0606ca;
+}
 body{
     margin: 0;
     background: linear-gradient(120deg, #05073a,#dc0606ca);

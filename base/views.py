@@ -63,5 +63,10 @@ def logoutUser(request):
 
 def createPost(request):
     form = CreatePost()
+    if request.method == 'POST':
+        form = CreatePost()
+        if form.is_valid():
+            form.save()
+            return redirect('home')
     context = {'form':form}
     return render(request,'create_post.html',context)
