@@ -1,13 +1,26 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+
 {% block content %}
     <h2>Register</h2>
     <div class="container">
 
-        <form action="" method="POST">
+        <form class="form-control" action="{% url 'register'%}" method="POST">
             {% csrf_token %}
-            {% crispy form %}
+            <label for="">Username:</label>
+            {{form.username}}
+
+            <label for="">Email Address:</label>
+            {{form.email}}
+
+            <label for="">Password:</label>
+            {{form.password1}}
+
+            <label for="">Confirm Password:</label>
+            {{form.password2}}
             <input type="submit" value="Register" />
+            <br>
+            <p>Already signed up yet?</p>
+            <a href="{% url 'login' %}">Login</a>
         </form>
     </div>
 {% endblock %}
