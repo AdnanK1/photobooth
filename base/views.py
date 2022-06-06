@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout 
 from django.db.models import Q
-from .forms import CreateUserForm, CreatePost
+from .forms import CreateUserForm, CreatePost,UpdateUserForm, UpdateProfileForm
 from .models import Image
 
 # Create your views here.
@@ -61,6 +61,7 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
+@login_required
 def createPost(request):
     form = CreatePost()
     if request.method == 'POST':
@@ -70,3 +71,20 @@ def createPost(request):
             return redirect('home')
     context = {'form':form}
     return render(request,'create_post.html',context)
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect('home')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
+
+    return render(request, 'profile.html', {'user_form': user_form, 'profile_form': profile_form})
