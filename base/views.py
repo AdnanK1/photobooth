@@ -32,7 +32,7 @@ def register(request):
             return redirect('home')
 
     context = {'form':form}
-    return render(request,'register.html',context)
+    return render(request,'auth/register.html',context)
 
 def login_page(request):
     if request.user.is_authenticated:
@@ -54,7 +54,7 @@ def login_page(request):
             messages.error(request, 'Username or Password does not exist')
 
     context = {}
-    return render(request,'login.html',context)
+    return render(request,'auth/login.html',context)
 
 def logoutUser(request):
     logout(request)
