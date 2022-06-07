@@ -4,11 +4,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout 
 from django.db.models import Q
-from .forms import CreateUserForm, CreatePost,UpdateUserForm, UpdateProfileForm
-from .models import Image
+from .forms import CreateUserForm, CreatePost
+from .models import Image,NewsLetterRecipients
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+from .email import send_welcome_email
 
 
 # Create your views here.
@@ -31,8 +30,10 @@ def register(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             email = form.cleaned_data['email']
-            #recipient = NewsLetterRecipients(username=username,email=email)
+            recipient = NewsLetterRecipients(username=username,email=email)
+            recipient.save()
             user = authenticate(username=username,password=password)
+            send_welcome_email(username,email)
             login(request,user)
             return redirect('home')
 

@@ -28,3 +28,7 @@ class Image(models.Model):
     
     def number_of_likes(self):
         return self.likes.count()
+
+class NewsLetterRecipients(models.Model):
+    username = models.CharField(max_length = 30)
+    email = models.EmailField()
