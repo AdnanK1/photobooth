@@ -9,5 +9,6 @@ urlpatterns=[
     path('',views.home,name='home'),
     path('create_post',views.createPost,name='create'),
     path('profile',views.profile,name='profile'),
+    path('like', views.PostLike, name="post_like"),
     
 ]
